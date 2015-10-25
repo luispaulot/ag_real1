@@ -9,12 +9,12 @@ intervalo_xi = 5.12;
 pop = gera_populacao(n_populacao, n, intervalo_xi);
 pop = fitness(pop, n, n_populacao, A);
 %roleta_v2(pop, n, n_populacao); %Está errada
-for c = 1 :100
+for c = 1 :1
 	geracoes = 1;
 	%'--------------iteração 1----------------------'
 	while geracoes < 50
-		pop = torneio(pop, n, n_populacao);
-		%pop = elitismov2(pop, n_populacao, n, n_elite);
+		%pop = torneio(pop, n, n_populacao);
+		pop = elitismov2(pop, n_populacao, n, n_elite);
 		pop = cruzamento_mediav2(pop, n, n_populacao, prob_cruzamento);
 		%pop = cruzamento_media_geometrica(pop, n, n_populacao, prob_cruzamento);
 		pop = mutacao_subst_aleatoria(pop, n, n_populacao, prob_mutacao, intervalo_xi);
@@ -37,6 +37,7 @@ hold on
 plot(media_parcial, 'b')
 hold on
 plot(maiores_parcial, 'r')
+legend('Minimo','Medio', 'Maximo')
 media_total = mean(menores_parcial)
 maior_total = max(maiores_parcial)
 s = min(menores_parcial) 
