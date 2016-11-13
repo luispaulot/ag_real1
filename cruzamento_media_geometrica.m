@@ -1,10 +1,10 @@
 function [new_pop] = cruzamento_media_geometrica(pop, n, n_populacao, prob_cruzamento)
-    n_pais = sum(pop(:, n+2));%numero de pais selecionados na roleta/elitismo
-    pais = rand(n_pais, n+2);		%cria-se uma nova população auxiliar somente com os pais
+    n_pais = sum(pop(:, n+3));%numero de pais selecionados na roleta/elitismo
+    pais = rand(n_pais, n+3);		%cria-se uma nova população auxiliar somente com os pais
     
     cont = 0;
 	for i=1:n_populacao
-		if (pop(i,n+2) == 1) 		%verifica a ultima coluna do individuo (se 0 ou 1)
+		if (pop(i,n+3) == 1) 		%verifica a ultima coluna do individuo (se 0 ou 1)
 			cont = cont+1;
 			pais(cont, :) = pop(i, :);
 		end
@@ -18,7 +18,7 @@ function [new_pop] = cruzamento_media_geometrica(pop, n, n_populacao, prob_cruza
     for i = 1:percentual
         individuo1 = randi(n_pais,1,1); %rand de 1 a tamanho da populacao
         individuo2 = randi(n_pais,1,1); %rand de 1 a tamanho da população
-        cara_novo = rand(1, n+2);
+        cara_novo = rand(1, n+3);
         for j = 1:n
             b = rand();
             if (b > .5)
